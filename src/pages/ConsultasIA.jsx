@@ -37,7 +37,7 @@ function ConsultasIA() {
       setError(`Error: ${err.message}`);
     } finally {
       setCargando(false);
-      setConsulta("");
+      // setConsulta(""); // Eliminado para que no se borre el texto
     }
   };
 

@@ -332,6 +332,7 @@ function MedicamentosPage() {
         >
           <thead>
             <tr style={{ background: "#1976d2", color: "#fff" }}>
+              <th style={{ padding: "12px 8px", textAlign: "left" }}>ID</th>
               <th style={{ padding: "12px 8px", textAlign: "left" }}>Nombre</th>
               <th style={{ padding: "12px 8px", textAlign: "left" }}>
                 Principio Activo
@@ -369,7 +370,7 @@ function MedicamentosPage() {
             {paginatedMedicamentos.length === 0 ? (
               <tr>
                 <td
-                  colSpan="13"
+                  colSpan="14"
                   style={{
                     textAlign: "center",
                     padding: "20px",
@@ -403,6 +404,7 @@ function MedicamentosPage() {
                     }
                   }}
                 >
+                  <td style={{ padding: "12px 8px" }}>{med.id}</td>
                   <td style={{ padding: "12px 8px" }}>{med.nombre || "-"}</td>
                   <td style={{ padding: "12px 8px" }}>
                     {med.principioActivo || "-"}

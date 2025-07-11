@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaPills, FaUsers, FaRobot } from "react-icons/fa";
+import { FaHome, FaRobot } from "react-icons/fa";
 
 function Header() {
   return (
@@ -45,56 +45,6 @@ function Header() {
             }}
           >
             <FaHome style={{ marginRight: 6, marginBottom: 2 }} /> Inicio
-          </Link>
-          <Link
-            to="/medicamentos"
-            style={{
-              color: "#fff",
-              fontWeight: 500,
-              textDecoration: "none",
-              fontSize: "1.1rem",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "8px 12px",
-              borderRadius: "6px",
-              transition: "all 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = "rgba(255, 255, 255, 0.15)";
-              e.target.style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = "transparent";
-              e.target.style.transform = "translateY(0)";
-            }}
-          >
-            <FaPills style={{ marginRight: 6, marginBottom: 2 }} /> Medicamentos
-          </Link>
-          <Link
-            to="/clientes"
-            style={{
-              color: "#fff",
-              fontWeight: 500,
-              textDecoration: "none",
-              fontSize: "1.1rem",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "8px 12px",
-              borderRadius: "6px",
-              transition: "all 0.2s ease",
-            }}
-            onMouseEnter={(e) => {
-              e.target.style.background = "rgba(255, 255, 255, 0.15)";
-              e.target.style.transform = "translateY(-1px)";
-            }}
-            onMouseLeave={(e) => {
-              e.target.style.background = "transparent";
-              e.target.style.transform = "translateY(0)";
-            }}
-          >
-            <FaUsers style={{ marginRight: 6, marginBottom: 2 }} /> Clientes
           </Link>
           <Link
             to="/consultas-ia"
