@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Modal from "../components/Modal";
-import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
+import {
+  FaPlus,
+  FaEdit,
+  FaTrash,
+  FaCheck,
+  FaTimes,
+  FaUsers,
+} from "react-icons/fa";
 import "./MedicamentosPage.css";
 
 const API_URL = "http://localhost:8080/api/api/clientes";
@@ -238,9 +245,41 @@ function ClientesPage() {
   const endIndex = startIndex + itemsPerPage;
   const paginatedClientes = clientes.slice(startIndex, endIndex);
 
+  const renderAcciones = (cli) => (
+    <div style={{ display: "flex", gap: 8 }}>
+      <Button
+        icon={<FaEdit className="btn-icon-edit" />}
+        className="custom-btn secondary"
+        onClick={() => openEditModal(cli)}
+        disabled={loading}
+      >
+        Editar
+      </Button>
+      <Button
+        icon={<FaTrash className="btn-icon-delete" />}
+        className="custom-btn danger"
+        onClick={() => handleDelete(cli.id)}
+        disabled={loading}
+      >
+        Eliminar
+      </Button>
+    </div>
+  );
+
   return (
     <div>
-      <h2 style={{ marginBottom: 0 }}>Gestión de Clientes</h2>
+      <h2
+        style={{
+          marginBottom: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          color: "#43a047",
+        }}
+      >
+        <FaUsers style={{ fontSize: 28, color: "#43a047" }} /> Gestión de
+        Clientes
+      </h2>
 
       {/* Mensajes de estado */}
       {loading && (
@@ -332,117 +371,176 @@ function ClientesPage() {
       <div
         style={{
           overflowX: "auto",
-          overflowY: "auto",
-          maxWidth: "98vw",
-          maxHeight: "60vh",
           margin: "2rem auto 0 auto",
-          padding: 0,
+          maxWidth: "98vw",
+          borderRadius: 12,
+          boxShadow: "0 2px 12px rgba(25,118,210,0.10)",
+          background: "#fff",
         }}
       >
         <table
           style={{
-            minWidth: 1000,
+            minWidth: 900,
             width: "100%",
-            background: "#fff",
-            borderRadius: 8,
-            boxShadow: "0 1px 4px rgba(25,118,210,0.06)",
-            borderCollapse: "collapse",
+            borderCollapse: "separate",
+            borderSpacing: 0,
+            borderRadius: 12,
+            overflow: "hidden",
+            fontSize: 15,
+            fontFamily: "Segoe UI",
           }}
         >
           <thead>
-            <tr style={{ background: "#1976d2", color: "#fff" }}>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Nombre</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
-                Apellido
-              </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Email</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
-                Teléfono
-              </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
-                Dirección
-              </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>DNI</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
-                Fecha Nacimiento
-              </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Estado</th>
+            <tr
+              style={{
+                background: "#f5f5f5",
+                position: "sticky",
+                top: 0,
+                zIndex: 2,
+              }}
+            >
+              {/* Aquí van los <th> originales, solo cambia el style */}
+              {[
+                "ID",
+                "Nombre",
+                "Apellido",
+                "Email",
+                "Teléfono",
+                "Dirección",
+                "DNI",
+                "Fecha Nacimiento",
+                "Estado",
+              ].map((col, i) => (
+                <th
+                  key={col}
+                  style={{
+                    padding: "14px 10px",
+                    textAlign: "left",
+                    borderBottom: "2px solid #e0e0e0",
+                    position: "sticky",
+                    top: 0,
+                    background: "#f5f5f5",
+                    zIndex: 3,
+                  }}
+                >
+                  {col}
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {paginatedClientes.length === 0 ? (
               <tr>
                 <td
-                  colSpan="8"
-                  style={{
-                    textAlign: "center",
-                    padding: "20px",
-                    color: "#666",
-                  }}
+                  colSpan={9}
+                  style={{ textAlign: "center", color: "#888", padding: 32 }}
                 >
-                  {loading
-                    ? "Cargando clientes..."
-                    : "No hay clientes registrados"}
+                  No hay clientes registrados.
                 </td>
               </tr>
             ) : (
-              paginatedClientes.map((cli) => (
+              paginatedClientes.map((cli, idx) => (
                 <tr
                   key={cli.id}
                   onClick={() => setSelected(cli)}
                   style={{
                     background:
-                      selected && selected.id === cli.id ? "#b3e5fc" : "",
-                    cursor: "pointer",
+                      selected && selected.id === cli.id
+                        ? "#b3e5fc"
+                        : idx % 2 === 0
+                        ? "#fafbfc"
+                        : "#fff",
                     transition: "background 0.2s",
+                    cursor: "pointer",
                   }}
-                  onMouseEnter={(e) => {
-                    if (!selected || selected.id !== cli.id) {
-                      e.target.parentElement.style.background = "#f5f5f5";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!selected || selected.id !== cli.id) {
-                      e.target.parentElement.style.background = "";
-                    }
-                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background =
+                      selected && selected.id === cli.id
+                        ? "#b3e5fc"
+                        : "#e3f2fd")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background =
+                      selected && selected.id === cli.id
+                        ? "#b3e5fc"
+                        : idx % 2 === 0
+                        ? "#fafbfc"
+                        : "#fff")
+                  }
                 >
-                  <td style={{ padding: "12px 8px" }}>{cli.nombre || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>{cli.apellido || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>{cli.email || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>{cli.telefono || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>
-                    {cli.direccion || "-"}
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.id}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>{cli.dni || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.nombre}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.apellido}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.email}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.telefono}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.direccion}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.dni}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {cli.fechaNacimiento
                       ? cli.fechaNacimiento.slice(0, 10)
                       : "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
-                    <span
-                      style={{
-                        padding: "4px 8px",
-                        borderRadius: "12px",
-                        fontSize: "12px",
-                        fontWeight: "bold",
-                        background:
-                          cli.estado === "ACTIVO"
-                            ? "#e8f5e8"
-                            : cli.estado === "INACTIVO"
-                            ? "#fff3e0"
-                            : "#ffebee",
-                        color:
-                          cli.estado === "ACTIVO"
-                            ? "#2e7d32"
-                            : cli.estado === "INACTIVO"
-                            ? "#f57c00"
-                            : "#d32f2f",
-                      }}
-                    >
-                      {cli.estado || "-"}
-                    </span>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {cli.estado}
                   </td>
                 </tr>
               ))

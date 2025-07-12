@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Button from "../components/Button";
 import Modal from "../components/Modal";
-import { FaPlus, FaEdit, FaTrash, FaCheck, FaTimes } from "react-icons/fa";
+import {
+  FaPlus,
+  FaEdit,
+  FaTrash,
+  FaCheck,
+  FaTimes,
+  FaPills,
+} from "react-icons/fa";
 import "./MedicamentosPage.css";
 
 const API_URL = "http://localhost:8080/api/api/medicamentos";
@@ -223,7 +230,18 @@ function MedicamentosPage() {
 
   return (
     <div>
-      <h2 style={{ marginBottom: 0 }}>Gestión de Medicamentos</h2>
+      <h2
+        style={{
+          marginBottom: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          color: "#8e24aa",
+        }}
+      >
+        <FaPills style={{ fontSize: 28, color: "#8e24aa" }} /> Gestión de
+        Medicamentos
+      </h2>
 
       {/* Mensajes de estado */}
       {loading && (
@@ -313,55 +331,215 @@ function MedicamentosPage() {
       <div
         style={{
           overflowX: "auto",
-          overflowY: "auto",
-          maxWidth: "98vw",
-          maxHeight: "60vh",
           margin: "2rem auto 0 auto",
-          padding: 0,
+          maxWidth: "98vw",
+          borderRadius: 12,
+          boxShadow: "0 2px 12px rgba(25,118,210,0.10)",
+          background: "#fff",
         }}
       >
         <table
           style={{
             minWidth: 1200,
             width: "100%",
-            background: "#fff",
-            borderRadius: 8,
-            boxShadow: "0 1px 4px rgba(25,118,210,0.06)",
-            borderCollapse: "collapse",
+            borderCollapse: "separate",
+            borderSpacing: 0,
+            borderRadius: 12,
+            overflow: "hidden",
+            fontSize: 15,
+            fontFamily: "Segoe UI",
           }}
         >
           <thead>
-            <tr style={{ background: "#1976d2", color: "#fff" }}>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>ID</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Nombre</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+            <tr
+              style={{
+                background: "#1976d2",
+                color: "#fff",
+                position: "sticky",
+                top: 0,
+                zIndex: 2,
+              }}
+            >
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
+                ID
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
+                Nombre
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Principio Activo
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Presentación
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Concentración
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Laboratorio
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Precio</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Stock</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
+                Precio
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
+                Stock
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Stock Mínimo
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Fecha Caducidad
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Código Barras
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Categoría
               </th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>Estado</th>
-              <th style={{ padding: "12px 8px", textAlign: "left" }}>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
+                Estado
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#1976d2",
+                  zIndex: 3,
+                }}
+              >
                 Requiere Receta
               </th>
             </tr>
@@ -370,12 +548,8 @@ function MedicamentosPage() {
             {paginatedMedicamentos.length === 0 ? (
               <tr>
                 <td
-                  colSpan="14"
-                  style={{
-                    textAlign: "center",
-                    padding: "20px",
-                    color: "#666",
-                  }}
+                  colSpan={14}
+                  style={{ textAlign: "center", color: "#888", padding: 32 }}
                 >
                   {loading
                     ? "Cargando medicamentos..."
@@ -383,56 +557,137 @@ function MedicamentosPage() {
                 </td>
               </tr>
             ) : (
-              paginatedMedicamentos.map((med) => (
+              paginatedMedicamentos.map((med, idx) => (
                 <tr
                   key={med.id}
                   onClick={() => setSelected(med)}
                   style={{
                     background:
-                      selected && selected.id === med.id ? "#b3e5fc" : "",
-                    cursor: "pointer",
+                      selected && selected.id === med.id
+                        ? "#b3e5fc"
+                        : idx % 2 === 0
+                        ? "#fafbfc"
+                        : "#fff",
                     transition: "background 0.2s",
+                    cursor: "pointer",
                   }}
-                  onMouseEnter={(e) => {
-                    if (!selected || selected.id !== med.id) {
-                      e.target.parentElement.style.background = "#f5f5f5";
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    if (!selected || selected.id !== med.id) {
-                      e.target.parentElement.style.background = "";
-                    }
-                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background =
+                      selected && selected.id === med.id
+                        ? "#b3e5fc"
+                        : "#e3f2fd")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background =
+                      selected && selected.id === med.id
+                        ? "#b3e5fc"
+                        : idx % 2 === 0
+                        ? "#fafbfc"
+                        : "#fff")
+                  }
                 >
-                  <td style={{ padding: "12px 8px" }}>{med.id}</td>
-                  <td style={{ padding: "12px 8px" }}>{med.nombre || "-"}</td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {med.id}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {med.nombre || "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.principioActivo || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.presentacion || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.concentracion || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.laboratorio || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>${med.precio || "0"}</td>
-                  <td style={{ padding: "12px 8px" }}>{med.stock || "0"}</td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    ${med.precio || "0"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {med.stock || "0"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.stockMinimo || "0"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.fechaCaducidad ? med.fechaCaducidad.slice(0, 10) : "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.codigoBarras || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     {med.categoria || "-"}
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     <span
                       style={{
                         padding: "4px 8px",
@@ -456,7 +711,12 @@ function MedicamentosPage() {
                       {med.estado || "-"}
                     </span>
                   </td>
-                  <td style={{ padding: "12px 8px" }}>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
                     <span
                       style={{
                         padding: "4px 8px",

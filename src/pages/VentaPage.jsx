@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { FaTrash } from "react-icons/fa";
+import { FaShoppingCart } from "react-icons/fa";
 
 const API_URL = "http://localhost:8080/api/api/ventas";
 
@@ -70,7 +71,18 @@ function VentaPage() {
 
   return (
     <div>
-      <h2>Gestión de Ventas</h2>
+      <h2
+        style={{
+          marginBottom: 0,
+          display: "flex",
+          alignItems: "center",
+          gap: 10,
+          color: "#ff9800",
+        }}
+      >
+        <FaShoppingCart style={{ fontSize: 28, color: "#ff9800" }} /> Gestión de
+        Ventas
+      </h2>
       {loading && (
         <div style={{ color: "#1976d2", margin: "1rem 0" }}>Cargando...</div>
       )}
@@ -80,77 +92,263 @@ function VentaPage() {
       {success && (
         <div style={{ color: "#388e3c", margin: "1rem 0" }}>{success}</div>
       )}
-      <table
+      <div
         style={{
-          width: "100%",
-          borderCollapse: "collapse",
-          marginTop: 24,
-          fontSize: 14,
+          overflowX: "auto",
+          margin: "2rem auto 0 auto",
+          maxWidth: "98vw",
+          borderRadius: 12,
+          boxShadow: "0 2px 12px rgba(25,118,210,0.10)",
+          background: "#fff",
         }}
       >
-        <thead>
-          <tr style={{ background: "#f5f5f5" }}>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>ID</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>N° Factura</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>Subtotal</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>IGV</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>Total</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>
-              Método de Pago
-            </th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>Estado</th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>
-              Observaciones
-            </th>
-            <th style={{ padding: 8, border: "1px solid #ddd" }}>
-              Fecha de Venta
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {paginatedVentas.length === 0 ? (
-            <tr>
-              <td colSpan={9} style={{ textAlign: "center", color: "#888" }}>
-                No hay ventas registradas.
-              </td>
+        <table
+          style={{
+            minWidth: 900,
+            width: "100%",
+            borderCollapse: "separate",
+            borderSpacing: 0,
+            borderRadius: 12,
+            overflow: "hidden",
+            fontSize: 15,
+            fontFamily: "Segoe UI",
+          }}
+        >
+          <thead>
+            <tr
+              style={{
+                background: "#f5f5f5",
+                position: "sticky",
+                top: 0,
+                zIndex: 2,
+              }}
+            >
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                ID
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                N° Factura
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Subtotal
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                IGV
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Total
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Método de Pago
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Estado
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Observaciones
+              </th>
+              <th
+                style={{
+                  padding: "14px 10px",
+                  textAlign: "left",
+                  borderBottom: "2px solid #e0e0e0",
+                  position: "sticky",
+                  top: 0,
+                  background: "#f5f5f5",
+                  zIndex: 3,
+                }}
+              >
+                Fecha de Venta
+              </th>
             </tr>
-          ) : (
-            paginatedVentas.map((venta) => (
-              <tr key={venta.id}>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.id}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.numeroFactura || "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.subtotal ?? "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.igv ?? "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.total ?? "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.metodoPago || "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.estado || "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.observaciones || "-"}
-                </td>
-                <td style={{ padding: 8, border: "1px solid #ddd" }}>
-                  {venta.fechaVenta
-                    ? new Date(venta.fechaVenta).toLocaleString()
-                    : "-"}
+          </thead>
+          <tbody>
+            {paginatedVentas.length === 0 ? (
+              <tr>
+                <td
+                  colSpan={9}
+                  style={{ textAlign: "center", color: "#888", padding: 32 }}
+                >
+                  No hay ventas registradas.
                 </td>
               </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+            ) : (
+              paginatedVentas.map((venta, idx) => (
+                <tr
+                  key={venta.id}
+                  style={{
+                    background: idx % 2 === 0 ? "#fafbfc" : "#fff",
+                    transition: "background 0.2s",
+                    cursor: "pointer",
+                  }}
+                  onMouseEnter={(e) =>
+                    (e.currentTarget.style.background = "#e3f2fd")
+                  }
+                  onMouseLeave={(e) =>
+                    (e.currentTarget.style.background =
+                      idx % 2 === 0 ? "#fafbfc" : "#fff")
+                  }
+                >
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.id}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.numeroFactura || "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.subtotal ?? "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.igv ?? "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.total ?? "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.metodoPago || "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.estado || "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.observaciones || "-"}
+                  </td>
+                  <td
+                    style={{
+                      padding: "12px 10px",
+                      borderBottom: "1px solid #f0f0f0",
+                    }}
+                  >
+                    {venta.fechaVenta
+                      ? new Date(venta.fechaVenta).toLocaleString()
+                      : "-"}
+                  </td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
       {/* Paginación */}
       {totalPages > 1 && (
         <div style={{ marginTop: 16, display: "flex", gap: 8 }}>

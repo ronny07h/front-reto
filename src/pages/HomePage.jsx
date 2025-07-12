@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaPills, FaUsers, FaShoppingCart, FaRobot } from "react-icons/fa";
+import {
+  FaPills,
+  FaUsers,
+  FaShoppingCart,
+  FaRobot,
+  FaFileInvoiceDollar,
+} from "react-icons/fa";
 
 function HomePage() {
   const secciones = [
@@ -25,6 +31,13 @@ function HomePage() {
       ruta: "/venta",
       color: "#ff9800",
     },
+    {
+      titulo: "Detalle de Ventas",
+      descripcion: "Consulta el detalle de cada venta realizada",
+      icono: <FaFileInvoiceDollar size={40} />,
+      ruta: "/detalle-venta",
+      color: "#9c27b0",
+    },
   ];
 
   return (
@@ -37,7 +50,7 @@ function HomePage() {
       {/* Secciones principales */}
       <div style={{ marginBottom: "3rem" }}>
         <h3 style={{ marginBottom: "1.5rem", color: "#333" }}>
-          Gestión Principal
+          Gestión Principal de Farmaco Plus
         </h3>
         <div
           style={{
@@ -108,63 +121,7 @@ function HomePage() {
       </div>
 
       {/* Sección de IA */}
-      <div>
-        <h3 style={{ marginBottom: "1.5rem", color: "#333" }}>
-          Consultas Inteligentes
-        </h3>
-        <div
-          style={{
-            background: "#fff",
-            border: "2px solid #9c27b0",
-            borderRadius: "12px",
-            padding: "2rem",
-            textAlign: "center",
-            transition: "all 0.3s ease",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            maxWidth: "400px",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-5px)";
-            e.currentTarget.style.boxShadow = "0 8px 25px rgba(0, 0, 0, 0.15)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 4px 6px rgba(0, 0, 0, 0.1)";
-          }}
-        >
-          <Link
-            to="/consultas-ia"
-            style={{
-              textDecoration: "none",
-              color: "inherit",
-              display: "block",
-            }}
-          >
-            <div style={{ color: "#9c27b0", marginBottom: "1rem" }}>
-              <FaRobot size={40} />
-            </div>
-            <h4
-              style={{
-                margin: "0 0 0.5rem 0",
-                color: "#9c27b0",
-                fontSize: "1.3rem",
-                fontWeight: "600",
-              }}
-            >
-              Consultas de IA
-            </h4>
-            <p
-              style={{
-                margin: 0,
-                color: "#666",
-                fontSize: "0.95rem",
-              }}
-            >
-              Realiza consultas inteligentes sobre los datos de la farmacia
-            </p>
-          </Link>
-        </div>
-      </div>
+      {/* Eliminado: sección de IA */}
     </div>
   );
 }
